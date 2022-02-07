@@ -2,7 +2,7 @@ apiVersion: mq.ibm.com/v1beta1
 kind: QueueManager
 metadata:
   name: mq1
-  namespace: mq
+  namespace: cp4i
 spec:
   license:
     accept: true
@@ -39,7 +39,7 @@ spec:
     enabled: true
   tracing:
     enabled: true
-    namespace: od
+    namespace: cp4i
     # collector:
       # image: cp.icr.io/cp/icp4i/od/icp4i-od-collector:2.5.0-amd64@sha256:44460e67780a4166a07a36da10260d9497526afdd899af9ad745ac6197e92ca6
   pki:
@@ -50,11 +50,5 @@ spec:
           items:
             - tls.key
             - tls.crt
-    trust:
-      - name: trust1
-        secret:
-          secretName: tls-eris-trust
-          items:
-            - CSQ9.crt
   imagePullSecrets:
     - name: ibm-entitlement-key
